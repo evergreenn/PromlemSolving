@@ -10,31 +10,15 @@ public class 거스름돈 {
 
         int input = Integer.valueOf(br.readLine());
         int cnt=0;
+        int[] arr = {500, 100, 50, 10};
 
-        while (input!=0) {
-            System.out.println(input);
-            if (input >= 500) {
-                input-=500;
-                cnt++;
-                continue;
-            }
-            if (input >= 100) {
-                input-=100;
-                cnt++;
-                continue;
-            }
-            if (input >= 50) {
-                input-=50;
-                cnt++;
-                continue;
-            }
-            if (input >= 10) {
-                input -= 10;
-                cnt++;
-                continue;
-            }
+        for (int coin : arr) {
+            cnt+=input/coin;
+            input%=coin;
 
         }
+
+
         System.out.println(cnt);
 
 
