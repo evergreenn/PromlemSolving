@@ -1,9 +1,11 @@
-### IntelliJ IDEA ###
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### Eclipse ###
+### STS ###
 .apt_generated
 .classpath
 .factorypath
@@ -15,19 +17,30 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+##yml 삭제
+application.yml
+
+### IntelliJ IDEA ###
+gradle
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
+src/main/resources/
+*.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-
 ### VS Code ###
 .vscode/
-
-### Mac OS ###
-.DS_Store
-
-*.idea
-PS.iml
 
