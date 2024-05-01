@@ -11,37 +11,29 @@ public class 거스름돈 {
         int input = Integer.valueOf(br.readLine());
         int cnt=0;
 
-        while (input != 0) {
+        while (input!=0) {
             System.out.println(input);
-
-            if (input % 500 == 0) {
-                input=input%500;
-                System.out.println("input = " + input);
+            if (input >= 500) {
+                input-=500;
                 cnt++;
                 continue;
             }
-            if (input % 100 == 0) {
-
-                input=input%100;
+            if (input >= 100) {
+                input-=100;
                 cnt++;
-                System.out.println("input = " + input);
-
                 continue;
             }
-            if (input % 50 == 0) {
-                input%=50;
+            if (input >= 50) {
+                input-=50;
                 cnt++;
-                System.out.println("input = " + input);
-
                 continue;
             }
-            if (input % 10 == 0) {
-                input%=10;
+            if (input >= 10) {
+                input -= 10;
                 cnt++;
-                System.out.println("input = " + input);
-
                 continue;
             }
+
         }
         System.out.println(cnt);
 
