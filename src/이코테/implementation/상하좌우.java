@@ -17,24 +17,24 @@ public class 상하좌우 {
         int[] dx={-1,0,+1,0}; //상 우 하 좌 행(높이)
         int[] dy={0,+1,0,-1} ;//상 우 하 좌  열(넓이)
 
-        HashMap<String, Integer> order_map = new HashMap<>();
-
-        order_map.put("U",0);
-        order_map.put("R",1);
-        order_map.put("D",2);
-        order_map.put("L",3);
+        String[] order_arr={"U","R","D","L"};
 
         int x= 1, y= 1 ;
-        int nx,ny;
+
         String[] orders = s.nextLine().split(" ");
 
-        for (int i = 0; i < orders.length; i++) {
-            String order=orders[i];
-            int index=order_map.get(order);
+        int nx=0,ny=0;
 
-            nx=x+dx[index];
-            ny=y+dy[index];
+        for (String order : orders) {
 
+            for (int i=0;i<order_arr.length ; i++) {
+                if (order_arr[i].equals(order)) {
+
+                    nx=x+dx[i];
+                    ny=y+dy[i];
+
+                }
+            }
             if(nx<1 || nx>N || ny <1 || ny >N){
                 continue;
             }
