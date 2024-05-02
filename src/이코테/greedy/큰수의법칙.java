@@ -1,4 +1,4 @@
-package 이코테;
+package 이코테.greedy;
 
 import java.io.BufferedReader;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package 이코테;
+package 이코테.greedy;
 
 import java.util.Arrays;
 import java.util.Scanner;
