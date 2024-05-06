@@ -10,14 +10,9 @@ public class 왕실의나이트 {
         // 행은 1부터 시작, 열은 a 부터 시작.
 
         Scanner s = new Scanner(System.in);
-
-
-        String[] input=s.nextLine().split("");
-        System.out.println(Arrays.toString(input));
-
-        String col=input[0];
-        int x=Integer.valueOf(input[1]); //행
-        int y=Character.valueOf(col.charAt(0))-'a'+1; //열 (주의 아스키코드 'a' 를 빼면 0임) +1을 더 해줘야함.
+        String input = s.nextLine();
+        int y = input.charAt(0)-'a'+1;
+        int x = input.charAt(1)-'0';
 
         int[] dx={-2,-2,-1,+1,+2,+2,-1,+1};//상우 상좌 우상 우하 하우 하좌 좌상 좌하
         int[] dy={-1,+1,+2,+2,-1,+1,-2,-2};
