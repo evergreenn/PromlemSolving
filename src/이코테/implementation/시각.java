@@ -22,7 +22,6 @@ public class 시각 {
                     if (hour.contains("3") || min.contains("3") || sec.contains("3")) {
                         cnt++;
                     }
-
                 }
             }
         }
