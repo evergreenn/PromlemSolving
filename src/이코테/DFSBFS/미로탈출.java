@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class 미로탈출 {
     static int[][] arr;
-    static int[][] cost;
+
     static int N;
     static int M;
     static int[] dx={-1,+1,0,0,};
@@ -24,8 +24,7 @@ public class 미로탈출 {
          s.nextLine();
 
         arr = new int[N][M];
-        cost=new int[N][M];
-        cost[0][0]=1;// 첫 방문지도 1회 이동으로 침.
+
 
         for (int i = 0; i < N; i++) {
             arr[i] = Arrays.stream(s.nextLine().split(""))
@@ -33,18 +32,19 @@ public class 미로탈출 {
                     .toArray();
         }
         bfs(0,0);
-        System.out.println(cost[N-1][M-1]);
+        System.out.println(arr[N-1][M-1]);
+
+        for (int[] a : arr) {
+            System.out.println(Arrays.toString(a));
+        }
 
     }
     public static void bfs(int x, int y) {
-        arr[x][y]=2;//방문처리
         int nx,ny;
         queue.add(new node(x,y));
 
         while (!queue.isEmpty()) {
             node cur = queue.remove();
-            arr[cur.x][cur.y] = 2;
-
             x = cur.x;
             y = cur.y;
 
@@ -54,11 +54,14 @@ public class 미로탈출 {
                 if (nx < 0 || ny < 0 || nx >= N || ny >= M) {
                     continue;
                 }
-                if (arr[nx][ny] == 0 || arr[nx][ny] == 2) {
+                if (arr[nx][ny] == 0) {
                     continue;
                 }
-                queue.add(new node(nx, ny));
-                cost[nx][ny]=cost[x][y]+1; //주의 큐에 넣을때, 최솟값 처리 해줘야 가까운 순서를 같은 레벨로 횟수가 처리됨.
+                if (arr[nx][ny] == 1) {
+                    queue.add(new node(nx, ny));
+                    arr[nx][ny]=arr[x][y]+1; //주의 큐에 넣을때, 최솟값 처리 해줘야 가까운 순서를 같은 레벨로 횟수가 처리됨.
+                }
+
             }
         }
 
