@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class 위에서아래로 {
@@ -18,7 +20,9 @@ public class 위에서아래로 {
             list.add(Integer.parseInt(br.readLine()));
         }
 
-        list.sort(Comparator.reverseOrder());
+
+        list.sort(Collections.reverseOrder());
+
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
