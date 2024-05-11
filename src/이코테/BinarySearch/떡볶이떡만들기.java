@@ -6,68 +6,59 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class 떡볶이떡만들기 {
-    public static void main(String[] args) throws IOException {
-        //10시 51분, 11시 15분  제한시간 40분
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args)  {
+        Scanner s = new Scanner(System.in);
 
-        int[] input = Arrays.stream(br.readLine().split(" "))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+        int N = s.nextInt();
+        int M=s.nextInt();
+        int[] arr = new int[N];
 
-
-        int N = input[0];
-        int M = input[1];
-
-        int[] arr;
-
-        arr = Arrays.stream(br.readLine().split(" "))
-                .mapToInt(Integer::parseInt)
-                .sorted() //comparator 가능 ?
-                .toArray();
-
-
-        //아이디어 큰것부터 구하기 -> 최솟값이므로.
-
-        for (int i = arr.length-1; i >= 0; i--) {
-            int target=arr[i];
-
-            int index = binarysearch(arr, 0, N - 1, target);
-            int sum =sum(arr, index);
-            if (sum >= M) {
-                System.out.println(target);
-                break;
-            }
+        for (int i = 0; i < N; i++) {
+            arr[i]=s.nextInt();
         }
 
+        int max = Arrays.stream(arr)
+                .max()
+                .getAsInt();//배열을 정렬할 필요 없이 바로 최댓값을 구하기
+        //배열 자체를 탐색하는것이 아님.
 
-    }
-
-    public static int binarysearch(int[] arr, int start, int end, int target) {
-        if (start > end) {
-            return -1;
-        }
-        int mid=(start+end)/2;
-
-        if (arr[mid] == target) {
-            return mid;
-        } else if (arr[mid] > target) {
-            return binarysearch(arr, start, mid - 1, target);
-        } else {
-            return binarysearch(arr, mid + 1, end, target);
-        }
-    }
-
-    // 총 들고갈 양을 반환하는 함수.
-    public static int sum(int[] arr, int index) {
-
-        int slice= arr[index];
+        int start=0;
+        int end=max;
         int sum=0;
+        int result=0;
 
-        for (int i = index; i < arr.length; i++) {
-            sum+=arr[i]-slice;
+        while (start <= end) {
+
+            int mid=(start+end)/2; // 중간 자르는 막대의 높이를 mid 값으로 계속 줄여나가는것임.
+
+            for (int a : arr) {
+                if (a > mid) {
+
+                    sum+=(a-mid);
+                }
+            }
+
+//            if (sum == M) {
+//                System.out.println(mid);
+//                break;
+//            }
+            if (sum < M) {
+                end=mid-1;
+
+            } else {
+                start = mid + 1;
+                result=mid; //즉, 문제에서 정확하게 값이 일치하지 않을경우
+                //최댓값을 구하는 것이므로, sum> M 일 경우에 result 값을 저장.
+            }
+            sum=0;
+
         }
-        return sum;
+        System.out.println(result);
+
     }
+
+
 }
