@@ -25,11 +25,10 @@ public class 개미전사 {
             dp[i]=Math.max(dp[i-1],dp[i-2]+arr[i]);
 
         }
-        System.out.println(Arrays.toString(dp));
-        int max = Arrays.stream(dp)
-                .max()
-                .getAsInt();
-        System.out.println(max);
+        System.out.println(dp[N-1]); //dp에 저장값 -> 해당 인덱스에 도달할때까지
+        //약탈을 했을때, 최댓값.
+
+
 
 
 
