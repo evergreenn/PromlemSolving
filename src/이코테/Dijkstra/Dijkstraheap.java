@@ -60,9 +60,10 @@ public class Dijkstraheap {
 
             for (int i = 0; i < linked.get(now_index).size(); i++) {
                 Node1 linked_node = linked.get(now_index).get(i);
+                int cost = d_array[now_index]+ linked_node.distance;// 현재 방문한 노드까지의 비용과 타겟 노드까지의 거리의 합
 
-                if (d_array[linked_node.target] > d_array[now_index]+linked_node.distance) { //갱신될 경우 큐에 삽입
-                    d_array[linked_node.target]= d_array[now_index]+linked_node.distance;
+                if (d_array[linked_node.target] > cost) { // 새롭게 연결된 노드까지의 합이 더 작을경우 갱신
+                    d_array[linked_node.target]= cost;
                     queue.add(linked_node);
                 }
 
