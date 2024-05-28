@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 public class 커리큘럼 {
     static int[] cost_arr;
     static int[] indegree;
+    static int[] dp;
     static ArrayList<ArrayList<Subject>> list;
     static Queue<Integer> queue = new LinkedList<>();
 
@@ -24,6 +25,7 @@ public class 커리큘럼 {
         int N = s.nextInt();
          cost_arr = new int[N + 1];
          indegree=new int[N+1];
+        dp = new int[N + 1];
         Arrays.fill(cost_arr, 0);
         Arrays.fill(indegree, 0);
 
@@ -49,6 +51,11 @@ public class 커리큘럼 {
                 }
             }
         }
+        dp=cost_arr.clone();
+        topology_sort();
+        for (int i = 1; i < dp.length; i++) {
+            System.out.println(dp[i]);
+        }
     }
 
     public static void topology_sort() {
@@ -60,7 +67,20 @@ public class 커리큘럼 {
             }
         }
 
+        while (!queue.isEmpty()) {
+            Integer now = queue.remove();
+            //해당 노드가 제거되면서, 해당 노드와 연결되어있던 노드들의 진입차수를 -1 하고 0인 값들을 큐에 넣음.
+            for (int i = 0; i < list.get(now).size(); i++) {
+                Subject subject = list.get(now).get(i);
 
+                indegree[subject.index]-=1;
+                if (indegree[subject.index] == 0) {
+                    queue.add(subject.index);
+                    //진입차수가 0인 노드를 큐에 넣는 과정에서 현재 방문한 노드의 누적 방문값과 새로 넣는 노드의 비용을 더해서 새로운 노드의 누적 결과값에 넣음.
+                    dp[subject.index]=dp[now]+subject.cost;
+                }
+            }
+        }
     }
 }
 class Subject {
