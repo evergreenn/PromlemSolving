@@ -16,19 +16,23 @@ public class 모험가길드 {
             queue.add(s.nextInt());
         }
 
-        Collections.sort(queue,Collections.reverseOrder());
+        Collections.sort(queue);
         System.out.println(queue.toString());
         int cnt=0;
+        int result=0;
 
         while (!queue.isEmpty()) {
             int max = queue.removeFirst();
             cnt++;
-            for (int i = 0; i < (max-1); i++) {
-                queue.remove();
+            if (cnt >= max) {
+                //마지막으로 그룹에 포함된 공포도보다 크거나 같다면 +1
+                result+=1;
+                cnt=0;
             }
+
         }
 
-        System.out.println(cnt);
+        System.out.println(result);
 
     }
 }
