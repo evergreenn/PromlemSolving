@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class 문자열뒤집기 {
     public static void main(String[] args) {
         // 1 그룹과 0 그룹의 갯수를 카운트 하고, 두 그룹중 작은 그룹의 갯수를 반환
+        // -> 답을 다시 보고 의역하자면 0을 1로 바꾸는 경우와 1을 0으로 바꾸는 경우중 작은 것을 반환
         Scanner s = new Scanner(System.in);
         int zero=0;
         int one=0;
@@ -32,7 +33,7 @@ public class 문자열뒤집기 {
             } else {
                 while (!queue.isEmpty()) {
                     n=queue.peek();
-                    if (n != 0) {
+                    if (n != 1) {
                         break;
                     }
                     queue.remove();
@@ -40,12 +41,12 @@ public class 문자열뒤집기 {
                 one++;
             }
         }
-        System.out.println("one = " + one);
-        System.out.println("zero = " + zero);
+
         System.out.println(Math.min(zero, one));
 
     }
 }
 /*
 0001100
+01001
  */
