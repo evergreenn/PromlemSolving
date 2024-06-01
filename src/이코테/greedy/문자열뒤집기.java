@@ -1,5 +1,6 @@
 package 이코테.greedy;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -12,9 +13,15 @@ public class 문자열뒤집기 {
         int[] result = new int[2];
 
         String input = s.nextLine();
+        if (input.charAt(0) == '0') { //주의 0 으로 바로 비교하면 안됨, 유니코드 값이 비교되므로 무조건 작은따옴표 '0' 을 비교해야함.
+            result[0]++;
+        } else {
+            result[1]++;
+        }
+        System.out.println(Arrays.toString(result));
         for (int i = 0; i < (input.length()-1); i++) {
-            char c=input.charAt(i);
             if (input.charAt(i) != input.charAt(i+1)) {
+                char c=input.charAt(i+1);
 //                int n=  Integer.valueOf(c); 실수주의 , valueOf는 유니코드 값으로 바꿔버림
                 int n = Character.getNumericValue(c);
                 result[n]+=1;
