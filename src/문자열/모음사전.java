@@ -6,10 +6,9 @@ import java.util.*;
 
 class 모음사전 {
     static String result;
-    static int n = 5;
     static Boolean[] visit;
     static String[] arr;
-    static LinkedList<String> list;
+    static LinkedList<String> linkedList;
 
     public static void main(String[] args) {
         //11:09
@@ -21,29 +20,31 @@ class 모음사전 {
         result="";
         visit=new Boolean[5];
         Arrays.fill(visit,false);
-        list=new LinkedList<>();
+        linkedList =new LinkedList<>();
 
-        dfs("");
+        for (int i = 1; i <= 5; i++) { // 1자리 부터 5자리까지 각각의 자리에 들어갈수 있는 모든 값을 완전탐색함.
+            dfs("",i);
+        }
 
         //처음에 해맸던 부분 당연히 5 C 5 이면 뽑는 조합의 수는 1개임. 당연히 AEIOU 1개임.(중복을 허용하지 않기 때문임)
         //내 의도대로 할려면 중복 순열을 사용해야함.
+        // 차라리 dfs의 백트레킹을 이용한 완전탐색으로 풀면 됨.
 
-        Collections.sort(list);
-        answer=list.indexOf(word)+1;
+        Collections.sort(linkedList);
 
-        System.out.println("answer = " + answer);
+        answer= linkedList.indexOf(word)+1;
 
+        System.out.println(answer);
     }
 
-    public static void dfs(String result) {
-        if (result.length() == 5) {
-            list.add(result);
-            result="";
+    public static void dfs(String result,int end) {
+        if (result.length() == end) {
+            linkedList.add(result);
             return;
         }
 
         for (int i = 0; i < arr.length; i++) {
-            dfs(result + arr[i]);
+            dfs(result + arr[i],end);
         }
 
 
