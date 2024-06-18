@@ -4,10 +4,10 @@ import java.util.*;
 
 
 
-class 문자열사전 {
+class 모음사전 {
     static String result;
     static int n = 5;
-    static boolean[] visit;
+    static Boolean[] visit;
     static String[] arr;
     static LinkedList<String> list;
 
@@ -19,11 +19,14 @@ class 문자열사전 {
         String word="AAAAE";
 
         result="";
-        visit=new boolean[5];
+        visit=new Boolean[5];
         Arrays.fill(visit,false);
         list=new LinkedList<>();
 
-        permutaion(0,5,5);
+        dfs("");
+
+        //처음에 해맸던 부분 당연히 5 C 5 이면 뽑는 조합의 수는 1개임. 당연히 AEIOU 1개임.(중복을 허용하지 않기 때문임)
+        //내 의도대로 할려면 중복 순열을 사용해야함.
 
         Collections.sort(list);
         answer=list.indexOf(word)+1;
@@ -31,25 +34,21 @@ class 문자열사전 {
         System.out.println("answer = " + answer);
 
     }
-    public static void permutaion(int start, int end, int depth){
 
-        if(depth == 0){
-            for(int i=0;i<end;i++){
-                if(visit[i]){
-                    result+=arr[i];
-                }
-            }
-            System.out.println("result = " + result);
+    public static void dfs(String result) {
+        if (result.length() == 5) {
             list.add(result);
             result="";
             return;
         }
-        for(int i=start;i<end;i++){
-            visit[i]=true;
-            System.out.println("start = " + start+" end = "+end+" depth = "+depth);
-            permutaion(i+1,end,depth-1);
-            visit[i]=false;
+
+        for (int i = 0; i < arr.length; i++) {
+            dfs(result + arr[i]);
         }
 
+
+
+
     }
+
 }

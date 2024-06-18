@@ -54,6 +54,7 @@ public class 만들수없는금액 {
             }
             set.add(sum);
             sum=0;
+            return;
 
         }
         for (int i = start; i < n; i++) {
