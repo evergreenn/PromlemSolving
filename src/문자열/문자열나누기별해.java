@@ -16,6 +16,7 @@ public class 문자열나누기별해 {
         for(int i=0;i<s.length();i++){
 
             if(i==s.length()-1){
+                //마지막 인덱스라면 바로 return, 남은갯수는 1개로 취급.
                 cnt++;
                 break;
             }
