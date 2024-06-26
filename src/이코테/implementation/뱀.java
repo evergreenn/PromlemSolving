@@ -57,19 +57,32 @@ public class 뱀 {
             }
 
             if (map[nx][ny] == 2) {
+                //사과라면 꼬리 삭제안하고 방문처리
                 queue.add(new Point(nx,ny));
                 map[nx][ny]=1;
                 x=nx;
                 y=ny;
             }else {
                 Point removeFirst = queue.removeFirst();
-                map[removeFirst.x][removeFirst.y]=0;
-                map[nx][ny]=1;
+                map[removeFirst.x][removeFirst.y]=0; //꼬리 방문해제
+                queue.add(new Point(nx,ny));
+                map[nx][ny]=1; //새롭게 이동할 곳 방문처리
                 x=nx;
                 y=ny;
             }
 
-            if (direction.containsKey(3)) {
+            if (direction.containsKey(cnt)) {
+                String order = direction.get(cnt);
+                if(order.equals("D")){
+                    //시계방향 회전
+                    direct=(direct+1)%4;
+                }else if(order.equals("L")){
+                    //반시계방향 회전
+                    direct-=1;
+                    if(direct<0){
+                        direct=3;
+                    }
+                }
 
             }
         }
