@@ -39,7 +39,7 @@ public class 치킨배달 {
         visit = new Boolean[chicken.size()];
         Arrays.fill(visit,false);
         //치킨집의 조합을 추출.
-        combi(0, chicken.size(), 0);
+        combi(0, chicken.size(), M);
 
         int min=(int)1e9;
 
@@ -56,7 +56,7 @@ public class 치킨배달 {
     public static void combi(int start, int end, int depth) {
         // start ~ end 의 범위에서 depth개를 뽑는 경우
 
-        if (depth == M) {
+        if (depth == 0) {
 
             ArrayList<Node> inserted = new ArrayList<>();
             for (int j = 0; j < visit.length; j++) {
@@ -71,7 +71,7 @@ public class 치킨배달 {
         }
         for (int i = start; i < end; i++) {
             visit[i] = true;
-            combi(i + 1, end, depth + 1);
+            combi(i + 1, end, depth - 1);
             visit[i] = false;
         }
     }
