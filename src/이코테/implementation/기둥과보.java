@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class 기둥과보 {
-    public static ArrayList<ArrayList<Integer>> answer = new ArrayList<ArrayList<Integer>>();
-
-    //4: 37 ~
+    public static  ArrayList<ArrayList<Integer>> answer = new ArrayList<ArrayList<Integer>>();
+    //4: 37 ~ 7/1 2:36
     public int[][] solution(int n, int[][] build_frame) {
 
         for(int i=0;i<build_frame.length;i++){
@@ -14,9 +13,9 @@ public class 기둥과보 {
             int y=build_frame[i][1];
             int a=build_frame[i][2];
             int b=build_frame[i][3];
-            ArrayList<Integer> list = new ArrayList<>();
-            if(b==0){//설치일경우 일단 설치
+            if(b==1){//설치일경우 일단 설치
 
+                ArrayList<Integer> list = new ArrayList<>();
 
                 list.add(x);
                 list.add(y);
@@ -27,16 +26,16 @@ public class 기둥과보 {
 
                 }
             }
-            if(b==1){//삭제일 경우 일단 삭제
-                int index;
+            if(b==0){//삭제일 경우 일단 삭제
+                int index=0;
 
                 for(int j=0;j<answer.size();j++){
                     if(x==answer.get(j).get(0)&&y==answer.get(j).get(1)&&a==answer.get(j).get(2)){
                         index=j;
                     }
                 } //삭제할 노드의 인덱스를 검색
-                ArrayList<Integer> erased= answer.remove(index);  //우선적으로 인덱스 삭제
-
+                ArrayList<Integer> erased= answer.get(index);  //우선적으로 인덱스 삭제
+                answer.remove(erased);
                 if(!possible()){
                     answer.add(erased); //작업취소
                 }
@@ -55,18 +54,18 @@ public class 기둥과보 {
         }
         Collections.sort(sortlist);
 
-        int[][] answer = {};
-        answer =new int[sortlist.size()][3];
+        int[][] ans = {};
+        ans =new int[sortlist.size()][3];
         for(int i=0;i<sortlist.size();i++){
             Stuff s=sortlist.get(i);
-            answer[i][0]=s.x;
-            answer[i][1]=s.y;
-            answer[i][2]=s.a;
+            ans[i][0]=s.x;
+            ans[i][1]=s.y;
+            ans[i][2]=s.a;
 
         }
 
 
-        return answer;
+        return ans;
     }
     public boolean possible(){
 
@@ -77,7 +76,6 @@ public class 기둥과보 {
             int x=answer.get(i).get(0);
             int y=answer.get(i).get(1);
             int a=answer.get(i).get(2);
-            int b= answer.get(i).get(3);
 
 
             if(a==0){//기둥인경우
@@ -94,7 +92,6 @@ public class 기둥과보 {
                     int t_x=answer.get(j).get(0);
                     int t_y=answer.get(j).get(1);
                     int t_a=answer.get(j).get(2);
-                    int t_b= answer.get(j).get(3);
 
                     //보 위에 있거나.
                     if(x==t_x&&y==t_y&&t_a==1){
@@ -104,7 +101,7 @@ public class 기둥과보 {
                         check=true;
                     }
                     //다른 기둥위에 있는경우
-                    if(x==t_x&&y==t_y-1&&t_b==0){
+                    if(x==t_x&&y-1==t_y&&t_a==0){
                         check=true;
                     }
 
@@ -124,13 +121,12 @@ public class 기둥과보 {
                     int t_x=answer.get(j).get(0);
                     int t_y=answer.get(j).get(1);
                     int t_a=answer.get(j).get(2);
-                    int t_b= answer.get(j).get(3);
 
                     //한쪽 끝 부분이 기둥위에 있는 경우
-                    if(x==t_x&&y==t_y-1&&t_a==0){
+                    if(x==t_x&&y-1==t_y&&t_a==0){
                         check=true;
                     }
-                    if(x==t_x+1&&y==t_y-1&&t_a==0){
+                    if(x+1==t_x&&y-1==t_y&&t_a==0){
                         check=true;
                     }
                     //양쪽 끝 부분이 다른 보와 동시에 연결되어 있는 경우
