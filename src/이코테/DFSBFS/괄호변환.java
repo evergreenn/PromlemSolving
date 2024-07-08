@@ -5,6 +5,8 @@ class 괄호변환 {
     //5:13~ 7: 05
     public String solution(String p) {
 
+        //무조건 균형잡힌 문자열이 p로 온다는 사실
+        //u를 생성할때, 최초의 균형잡힌 문자열만 반환하면 된다는 사실.
         String answer = "";
         if(p.length()==0){
             return answer;
