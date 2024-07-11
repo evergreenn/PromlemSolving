@@ -1,8 +1,10 @@
 package 이코테.DFSBFS;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class 블록이동하기 {
     //9:48~12:14 2시간 30분 풀이.
@@ -132,3 +134,4 @@ public class 블록이동하기 {
         }
     }
 }
+
