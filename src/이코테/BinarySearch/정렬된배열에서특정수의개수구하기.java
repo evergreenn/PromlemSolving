@@ -50,45 +50,38 @@ public class 정렬된배열에서특정수의개수구하기 {
     }
 
     public static int lowerbound(int start, int end, int target) {
-        int mid = (start + end) / 2;
+        while(start<end){
+            int mid = (start + end) / 2;
 
-        if (start > end) {
-            return -1;
+            if(input[mid]>=target){
+                // <- 이쪽으로 당김. 오른쪽은 볼필요 X
+                end=mid;//하한은 포함이므로 mid 등호
+
+            }else{
+
+                start=mid+1;
+
+            }
+
+
         }
-
-        if (input[mid] == target && (mid == 0 || input[mid - 1] < target)) {
-
-            return mid;
-        }
-        if (input[mid] >= target) {
-            //왼쪽탐색
-            return lowerbound(start, mid - 1, target);
-        } else {
-           return lowerbound(mid + 1, end, target);
-        }
-
+        return end;
     }
 
     public static int upperbound(int start, int end, int target) {
-        int mid=(start+end)/2;
 
-        if(start>end){
-            return -1;
+        while(start<end){
+            int mid=(start+end)/2;
+
+
+            if(input[mid]>target){
+                // 이쪽으로 당김 ->
+                end=mid;
+            }else{
+                start=mid+1;
+            }
         }
-
-        if(input[mid]==target && (mid ==N-1 ||input[mid+1]>target)){
-
-            return mid;
-        }
-
-        if(input[mid]>target){
-            //타겟보다 클 경우 왼쪽탐색
-           return upperbound(start,mid-1,target);
-
-        }else{
-
-            return upperbound(mid+1,end,target);
-        }
+        return end;
 
     }
 }
