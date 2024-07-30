@@ -1,15 +1,18 @@
 package 이코테.BinarySearch;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class 정렬된배열에서특정수의개수구하기2 {
     static int[] arr;
+    static ArrayList<String> input;
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
 
         int N=s.nextInt();
         int X=s.nextInt();
         arr=new int[N];
+
 
         for(int i=0;i<N;i++){
             arr[i]=s.nextInt();
@@ -78,6 +81,23 @@ public class 정렬된배열에서특정수의개수구하기2 {
             }
         }
         return end;
+    }
+
+    //만약 검색 이 문자열일 시에 Comparable에 구현된 compareTo 이용하기. // 카카오 기출 풀이.
+
+    public static String str_lowwerbound(int start,int end,String target){
+
+        while(start<end){
+
+            int mid=(start+end)/2;
+
+            if(input.get(mid).compareTo(target)>=0){
+
+                end=mid;
+            }else{
+                start=mid+1;
+            }
+        }
     }
 }
 
