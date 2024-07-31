@@ -85,7 +85,7 @@ public class 정렬된배열에서특정수의개수구하기2 {
 
     //만약 검색 이 문자열일 시에 Comparable에 구현된 compareTo 이용하기. // 카카오 기출 풀이.
 
-    public static String str_lowwerbound(int start,int end,String target){
+    public static int str_lowwerbound(int start,int end,String target){
 
         while(start<end){
 
@@ -98,6 +98,7 @@ public class 정렬된배열에서특정수의개수구하기2 {
                 start=mid+1;
             }
         }
+        return end;
     }
 }
 
