@@ -20,7 +20,7 @@ public class 퇴사 {
         }
         int max=-(int)1e9;
 
-        for(int i=1;i<=N+1;i++){
+        for(int i=1;i<=N;i++){
             //i는 날짜 1일부터 시작
             for (Work work : list) {
                 if (work.date >= i) {
@@ -31,12 +31,14 @@ public class 퇴사 {
                     max=Math.max(max,dp[i]);
                 }
             }
+            dp[i+1]=Math.max(dp[i],dp[i+1]);
         }
+        System.out.println(Arrays.toString(dp));
         
 
 
 
-        System.out.println(max);
+        System.out.println(dp[N]);
 
 
     }
