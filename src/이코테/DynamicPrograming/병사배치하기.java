@@ -8,7 +8,7 @@ public class 병사배치하기 {
     static ArrayList<ArrayList<Integer>> output;
     static boolean[] visit;
     static int[] arr;
-    //9:07~
+    //9:07~10:26
     static int size;
     public static void main(String[] args) {
 
