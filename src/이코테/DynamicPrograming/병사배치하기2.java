@@ -33,7 +33,7 @@ public class 병사배치하기2 {
         }
         if(N==1){
             System.out.println(0);
-        }{
+        }else {
 
             System.out.println(N-max);
         }
