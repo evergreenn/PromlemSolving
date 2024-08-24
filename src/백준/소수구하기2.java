@@ -1,29 +1,37 @@
 package 백준;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class 소수구하기2 {
     public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
 
-        Scanner in = new Scanner(System.in);
-        int M = in.nextInt();
-        int N = in.nextInt();
+        int M = s.nextInt();
+        int N = s.nextInt();
 
-        boolean[] check=new boolean[N+1];
-        int cnt=0;
+        boolean[] arr = new boolean[N + 1];
 
-        for(int i=2;i<Math.sqrt(N);i++){
+        Arrays.fill(arr,true);
+        arr[0]=false;
+        arr[1]=false;
+        for(int i=2;i< Math.sqrt(N)+1;i++){
 
-            if(check[i]){
-
-                for(int j=2;j<N;j++){
-
-                    int num=i*j;
-                    check[num]=false;
-                    cnt++;
+            if(arr[i]){
+                int j=2;
+                int num=i*j;
+                while (num<=N){
+                    arr[num]=false;
+                    j++;
+                    num=j*i;
                 }
             }
         }
-        System.out.println(N-cnt);
+
+        for(int i=M;i<=N;i++){
+            if(arr[i]){
+                System.out.println(i);
+            }
+        }
     }
 }
