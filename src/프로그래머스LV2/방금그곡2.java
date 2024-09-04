@@ -34,7 +34,7 @@ public class 방금그곡2 {
 
                 if(judge==0){
 
-                    judge=o1.index-o2.index; //오름차순
+                    judge=o1.index-o2.index; //오름차순 (디폴트) 순서대로 빼는 것 !
                     return judge;
                 }
                 return judge;
