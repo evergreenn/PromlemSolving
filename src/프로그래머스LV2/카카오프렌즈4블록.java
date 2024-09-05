@@ -3,7 +3,7 @@ package 프로그래머스LV2;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class 프렌즈4블록 {
+public class 카카오프렌즈4블록 {
     public static ArrayList<Square> list=new ArrayList<Square>();
     public static int row;
     public static int col;

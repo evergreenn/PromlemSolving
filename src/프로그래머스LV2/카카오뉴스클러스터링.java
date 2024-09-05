@@ -2,7 +2,7 @@ package 프로그래머스LV2;
 
 import java.util.ArrayList;
 
-public class 뉴스클러스터링 {
+public class 카카오뉴스클러스터링 {
     public static ArrayList<String> A=new ArrayList<String>();
     public static ArrayList<String> B=new ArrayList<String>();
     public static ArrayList<String> inter=new ArrayList<String>();

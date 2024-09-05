@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class 방금그곡2 {
+public class 카카오방금그곡 {
     public static ArrayList<Music> list=new ArrayList<Music>();
     public static ArrayList<Result> result=new ArrayList<Result>();
 

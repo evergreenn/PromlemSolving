@@ -2,7 +2,7 @@ package 프로그래머스LV2;
 
 import java.util.LinkedList;
 
-public class 캐시 {
+public class 카카오캐시 {
     public static int size;
     public static LinkedList<String> queue=new LinkedList<>();
 
