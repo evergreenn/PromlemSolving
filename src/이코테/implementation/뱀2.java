@@ -65,7 +65,7 @@ public class 뱀2 {
             }
             if(map[nx][ny]==1){
                 //사과를 먹은 경우
-                queue.add(new Node(nx,ny));// 실수주의 !! 큐에 넣는것은 이동후 좌표(즉 다음에 이동한 머리부분)을 넣는 것임.
+                queue.add(new Node(nx,ny));// 실수주의 !! 큐에 넣는것은 "이동한" 좌표(즉 다음에 이동한 머리부분)을 넣는 것임.
                 //아직 뱀이 이동 안했으므로, 현재값인 snake_x, snake_y 를 넣으면 안됨.
                 //현재값을 넣으면, 도돌이표 될 뿐임. queue.add(new Node(snake_x,snake_y)) 이렇게 넣으면 안됨.
 
