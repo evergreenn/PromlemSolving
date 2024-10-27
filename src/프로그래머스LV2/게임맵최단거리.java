@@ -91,14 +91,15 @@ public class 게임맵최단거리 {
 
 
     }
-}
-class Node{
+    static class Node{
 
-    int x;
-    int y;
+        int x;
+        int y;
 
-    public Node(int x,int y){
-        this.x=x;
-        this.y=y;
+        public Node(int x,int y){
+            this.x=x;
+            this.y=y;
+        }
     }
 }
+

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class 연산자끼워넣기 {
+public class 연산자끼워넣기순열풀이법 {
     static int[] arr;
     static ArrayList<String> calculate = new ArrayList<>();
 

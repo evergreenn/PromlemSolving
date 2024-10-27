@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class 미로탈출 {
+    //BFS + DP의 조합으로 풀기 //프로그래머스 게임맵 최단거리문제 참고.
     static int[][] arr;
 
     static int N;

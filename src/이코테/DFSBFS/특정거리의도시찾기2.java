@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class 특정거리의도시찾기2 {
     //인접 리스트 방식 사용 -> 시작 노드를 좌표가 아닌 노드 번호로 생각 !
+    //매우중요 (BFS + DP ) 의 조합으로 풀기.
     static ArrayList<ArrayList<Integer>> list= new ArrayList<ArrayList<Integer>>();
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
