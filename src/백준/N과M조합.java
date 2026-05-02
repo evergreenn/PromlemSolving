@@ -5,32 +5,32 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class N과M조합 {
-    public static ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>();
+    public static ArrayList<ArrayList<Integer>> output
+            = new ArrayList<ArrayList<Integer>>();
     public static boolean[] visited;
+
+
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner s=new Scanner(System.in);
 
         int N=s.nextInt();
         int M=s.nextInt();
         visited=new boolean[N+1];
-        Arrays.fill(visited, false);
+
         combi(new int[M],1,N+1,0);
 
-        for (int i = 0; i < output.size(); i++) {
-            for (int j = 0; j < output.get(i).size(); j++) {
-                System.out.print(output.get(i).get(j)+" ");
-            }
-            System.out.println();
+        for(int i=0;i< output.size();i++){
+                System.out.println(output.get(i).toString());
+
         }
 
     }
-    public static void combi(int[] now, int start, int end, int depth){
-
-        if(depth==now.length){
+    public static void combi(int[] now, int start,int end,int depth){
+        if(now.length==depth){
             ArrayList<Integer> tmp = new ArrayList<>();
 
-            for (int i = 0; i < now.length; i++) {
-                tmp.add(now[i]);
+            for (int k = 0; k < now.length; k++) {
+                tmp.add(now[k]);
             }
             output.add(tmp);
 
@@ -38,7 +38,7 @@ public class N과M조합 {
         }
 
         for(int i=start;i<end;i++){
-            if(!visited[i]){
+            if (!visited[i]) {
                 visited[i]=true;
                 now[depth]=i;
                 combi(now,i+1,end,depth+1);
@@ -46,5 +46,9 @@ public class N과M조합 {
             }
         }
 
+
+
     }
+
+
 }
